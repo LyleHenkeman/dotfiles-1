@@ -69,6 +69,11 @@ dotenv
 
 source $ZSH/oh-my-zsh.sh
 
+# Source .shell-libs
+for lib in $(ls $HOME/.shell-libs); do
+  source $HOME/.shell-libs/$lib
+done
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
