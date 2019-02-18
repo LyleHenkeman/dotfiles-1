@@ -74,6 +74,9 @@ if [[ -a $HOME/.dotfilesverbose ]]; then
   export DOTFILESVERBOSE='true'
 fi
 
+# check and set which shell we are running
+export DOTSHELL=$(echo $SHELL | awk -F "/" '{print $NF}')
+
 # Source .shell-libs
 echo -n "Loading lib: "
 for lib in $(ls $HOME/.shell-libs); do
