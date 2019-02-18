@@ -2,21 +2,20 @@
 
 ## What is it? 
 This repo contains a collection of so-called 'dotfiles'. Dotfiles are configuration files, usually prefixed by a dot, that are mostly used on Unix-like systems. This repository contains dotfiles for several things, including: 
- - Zshell
- - Git
- - Vim
+ - bash
+ - zsh
+ - git
+ - vim
  - ...
 
 ## Disclaimer
 I am in no way responsible for this setup not working on your machine, breaking your current setup or otherwise harming your existence.
 
 ## automatic setup
-
-`curl -Lks https://tinyurl.com/linuxspecialist-dotfiles`
+`curl -Lks https://tinyurl.com/linuxspecialist-dotfiles | bash`
 
 
 ## manual setup
-
 Add the dotfiles alias to .zshrc
 
 `echo "dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc`

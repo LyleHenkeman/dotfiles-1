@@ -5,6 +5,12 @@ if [ $(uname) == "Linux" ]; then
   fi
 fi
 
+# If we run this on a Mac we want to setup homebrew and install everthing that is in the Brewfile
+if [ $(uname) == "Darwin" ]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew bundle
+fi
+
 git clone --bare https://github.com/dsteenstra/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    $(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
