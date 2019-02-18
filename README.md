@@ -6,16 +6,18 @@ This repo contains a collection of so-called 'dotfiles'. Dotfiles are configurat
  - zsh
  - git
  - vim
- - ...
+ - ... 
 
 ## Disclaimer
-I am in no way responsible for this setup not working on your machine, breaking your current setup or otherwise harming your existence.
+These dotfiles are subject to change. Feel free to clone or fork it. But I am in no way responsible for this setup not working on your machine, breaking your current setup or otherwise harming your existence.
 
-## automatic setup
+## Automatic setup
 `curl -Lks https://tinyurl.com/linuxspecialist-dotfiles | bash`
 
+The automatic setup does it the way I like it and the setup can be used for both Linux (Debian) and MacOS.
 
-## manual setup
+
+## Manual setup
 Add the dotfiles alias to .zshrc
 
 `echo "dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc`
