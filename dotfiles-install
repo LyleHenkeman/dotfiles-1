@@ -1,3 +1,9 @@
+OS=$(lsb_release -si)
+if [ $OS == "Debian" ]; then
+  apt-get update
+  apt-get install git git-crypt github-hub vim
+fi
+
 git clone --bare https://github.com/dsteenstra/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    $(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
