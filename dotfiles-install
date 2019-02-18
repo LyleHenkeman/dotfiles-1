@@ -19,3 +19,11 @@ if [ $? = 0 ]; then
 fi;
 dotfiles checkout
 dotfiles config status.showUntrackedFiles no
+
+dotfiles submodule init && dotfiles submodule update
+if [ ! -a $HOME/.vimplugindone ]; then
+  vim +BundleInstall +qall
+  touch $HOME/.vimplugindone
+fi
+
+exit 0
