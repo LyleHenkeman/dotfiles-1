@@ -1,4 +1,4 @@
-![Linux Specialist Logo](https://linux-specialist.nl/img/profile.jpg)
+![Linux Specialist Logo](https://linux-specialist.nl/img/datacenter-logo.jpg)
 # dotfiles
 
 ## What is it? 
