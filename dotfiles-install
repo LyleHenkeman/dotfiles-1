@@ -1,7 +1,8 @@
-OS=$(lsb_release -si)
-if [ $OS == "Debian" ]; then
-  apt-get update
-  apt-get install git git-crypt github-hub vim
+if [ $(uname) == "Linux" ]; then
+  if [ $(lsb_release -si) == "Debian" ]; then
+    sudo apt-get update
+    sudo apt-get install git git-crypt github-hub vim
+  fi
 fi
 
 git clone --bare https://github.com/dsteenstra/dotfiles.git $HOME/.dotfiles
