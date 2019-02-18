@@ -1,15 +1,12 @@
+![Linux Specialist Logo](https://linux-specialist.nl/img/profile.jpg)
 # dotfiles
 
 ## What is it? 
-This repo contains a collection of so-called 'dotfiles'. Dotfiles are configuration files, usually prefixed by a dot, that are mostly used on Unix-like systems. This repository contains dotfiles for several things, including: 
- - bash
- - zsh
- - git
- - vim
- - ... 
+This repo contains a collection of so-called 'dotfiles'. Dotfiles are configuration files, usually prefixed by a dot, that are mostly used on Unix-like systems. This repository contains dotfiles for several things that I personally use on a day to day basis. 
 
 ## Disclaimer
 These dotfiles are subject to change. Feel free to clone or fork it. But I am in no way responsible for this setup not working on your machine, breaking your current setup or otherwise harming your existence.
+Also note that these dotfiles are personalized so make sure to replace my name with your own if you decide to use it. 
 
 ## Automatic setup
 `curl -Lks https://tinyurl.com/linuxspecialist-dotfiles | bash`
