@@ -112,7 +112,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# check if we want verbosity while loading libs and env stuff
+if [[ -a $HOME/.dotfilesverbose ]]; then
+    export DOTFILESVERBOSE='true'
+fi
+
 # Source .shell-libs
+echo -n "Loading lib: "
 for lib in $(ls $HOME/.shell-libs); do
-    source $HOME/.shell-libs/$lib
+  source $HOME/.shell-libs/$lib
 done
+echo
