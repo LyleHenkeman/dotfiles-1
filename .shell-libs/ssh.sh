@@ -1,3 +1,7 @@
+if [[ $DOTFILESVERBOSE == "true" ]]; then
+    echo -n "ssh "
+fi
+
 link_ssh_agent() {
   if [[ $SSH_AUTH_SOCK =~ "/tmp/" ]]; then
     ln -sf $SSH_AUTH_SOCK ${HOME}/.ssh/ssh-auth-sock

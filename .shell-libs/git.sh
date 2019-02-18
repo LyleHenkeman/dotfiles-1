@@ -1,3 +1,7 @@
+if [[ $DOTFILESVERBOSE == "true" ]]; then
+  echo -n "git "
+fi
+
 git_stats() {
   echo "Git stats for $(git me) for today:"
   git log --author="$(git me)" --pretty=tformat: --numstat --since='12am' | \
