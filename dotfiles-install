@@ -1,4 +1,5 @@
 if [ $(uname) == "Linux" ]; then
+  echo "Installing linux packages"
   if [ $(lsb_release -si) == "Debian" ]; then
     sudo apt-get update
     sudo apt-get install git git-crypt github-hub vim tig direnv
@@ -7,10 +8,12 @@ fi
 
 # If we run this on a Mac we want to setup homebrew and install everthing that is in the Brewfile
 if [ $(uname) == "Darwin" ]; then
+  echo "Installing darwin packages using Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew bundle
 fi
 
+echo "Installing dotfiles"
 git clone --bare https://github.com/dsteenstra/dotfiles.git $HOME/.dotfiles
 function dotfiles {
    $(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
@@ -25,8 +28,9 @@ if [ $? = 0 ]; then
 fi;
 dotfiles checkout
 dotfiles config status.showUntrackedFiles no
-
 dotfiles submodule init && dotfiles submodule update
+
+echo "Installing vim plugins"
 if [ ! -a $HOME/.vimplugindone ]; then
   vim +BundleInstall +qall
   touch $HOME/.vimplugindone

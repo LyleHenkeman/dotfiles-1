@@ -1,0 +1,150 @@
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim
+
+[branch]
+  autosetupmerge = always
+
+[push]
+  default = current
+
+[alias]
+  # short aliases
+  st = status
+  co = checkout
+  ci = commit
+  br = branch
+  df = diff
+  lg = log -p
+  rso = remote show origin
+  me = config user.name
+
+  up = !git update
+  smash = !git ir
+
+  # interactive rebase
+  ir = !sh -c 'git rebase -i origin/${1-master}' -
+
+  # undo
+  unstage = reset HEAD
+  undo-commit = reset --soft HEAD^
+
+  # log aliases
+  log-branch = log origin/master..
+  blog = !git log-branch
+  mlog = !git log --committer=\"`git me`\"
+  llog = !git log --pretty=format:'%Cgreen(%ci)%Creset %Cred%h%Creset %<(20,trunc)%C(blue)%an%Creset  %s %C(yellow)%d%Creset ' --abbrev-commit
+
+  # all commits that aren't merges on all branches
+  all = !git log --pretty=oneline --abbrev-commit --all --no-merges
+
+  # all commits today for only me
+  today = !git all --since='12am' --committer=\"`git me`\"
+
+  # today's commits without formatting or paging
+  today-text = !git --no-pager today --no-color
+
+  # update current branch, rebase all locally diverging commits on top.
+  # update = !sh -c 'git fetch origin && git rebase -p origin/${1-master}' -
+  update = !git pull --rebase --prune --autostash
+
+  # list authors on project
+  authors = !sh -c 'git log --format='%aN' | sort -u' -
+
+  # creates a diff of current branch against supplied branch, usage: git
+  # export-branch [refbranch]
+  branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
+  export-branch = !git format-patch --stdout $1 > ~/branches/`git branch-name`.diff
+
+  # files different from master on current branch
+  fdm = !git diff origin/master... --name-status
+
+  # last commit info in svn style
+  last = !git show --name-status
+  last-files = !git last --pretty=format:""
+
+  # last commit only certain type of modification
+  mlast = !git last-files | awk 'match($1, /M/) {print $2}'
+  alast = !git last-files | awk 'match($1, /A/) {print $2}'
+  dlast = !git last-files | awk 'match($1, /D/) {print $2}'
+
+  # `git spawn my-new-branch`
+  # make new branch based on master no matter which branch is checked out
+  spawn = !sh -c 'git checkout -b $1 ${2-master} && git config branch.$1.localmerge ${2-master}' -
+
+  # `git nuke my-old-branch`
+  # (Checks out master and does a non-forced delete on the branch entered)
+  nuke = !git co master && sh -c 'git br -d $1' -
+
+  # `git clean-merged`
+  # clean up merged branches
+  clean-merged = "!git branch --merged | grep -v '\\^\\*\\|master' | xargs -n 1 git branch -d"
+
+  # `git sync`
+  # update current branch and master
+  sync = !git update && \
+  git co master && \
+  git pull && \
+  git co @{-1}
+
+  # attempt to cleanup some common problems
+  unfuck = !git fsck && git remote prune origin && git gc
+
+  # find the top level of current repository
+  top = !git rev-parse --show-toplevel
+
+  # list files changed by last commit in absolute location
+  list = !git show --pretty=format:"" --name-only | sed '/^$/d' | sed \"s|^|`git top`/|g\"
+
+  # give a count of dirty files
+  dirty = !git status --porcelain -uno | wc -l
+
+  # number of non-merge commits
+  peeps = !git log --pretty=format:"%Cblue%aN%Creset" --no-merges | sort | uniq -c | sort -rn
+  mergers = !git log --pretty=format:"%Cred%aN%Creset" --merges | sort | uniq -c | sort -rn
+
+  # Get list of PRs
+  prs = !hub issue | grep '/pull/'
+
+  # create PR to master quickly
+  pr = !sh -c 'hub pull-request -b master'
+
+  # clean up after PR has been merged
+  prdone = !sh -c 'git co ${1-master} && git up && git clean-merged'
+
+  up-log = !sh -c 'logstart=$(git rev-parse HEAD) && git pull --rebase --recurse-submodules --prune --autostash && echo "" && git --no-pager llog ${logstart}.. --stat'
+
+[color]
+  # enable colours. terminal needs to support them, of course.
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
+
+[apply]
+  # trailing whitespace.
+  whitespace = fix
+
+[advice]
+  # disables the introductionary explanations and hints
+  statusHints = false
+[diff]
+  tool=vimdiff
+
+[merge]
+  tool=vimdiff
+
+[difftool]
+  prompt=false
+
+[rerere]
+  enabled=true
+
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
