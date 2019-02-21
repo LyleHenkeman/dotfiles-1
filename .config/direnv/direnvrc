@@ -1,0 +1,3 @@
+if [ -r ~/.shell-libs/env.sh ]; then
+  source ~/.shell-libs/env.sh
+fi
