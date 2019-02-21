@@ -23,5 +23,8 @@ if [[ $- =~ "i" ]]; then
   load_env machines/$(hostname -s)
 fi
 
+# load dir_colors
+eval `dircolors ~/.dir_colors`
+
 # Aliases
 alias dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

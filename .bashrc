@@ -112,4 +112,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# load direnv
+eval "$(direnv hook bash)"
+export DIRENV_LOG_FORMAT=
+
 source ~/.dotrc

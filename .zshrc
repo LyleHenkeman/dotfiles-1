@@ -11,5 +11,9 @@ git
 dotenv
 )
 
+# load direnv
+eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=
+
 source $ZSH/oh-my-zsh.sh
 source ~/.dotrc
