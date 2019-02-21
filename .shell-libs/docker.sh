@@ -1,6 +1,6 @@
-export DOTLIBS="${DOTLIBS} docker"
 
 if [[ $(uname) == "Darwin" ]]; then
+    export DOTLIBS="${DOTLIBS} docker"
     # docker-machine stuff
     if [ $(which docker-machine) ]; then
 
