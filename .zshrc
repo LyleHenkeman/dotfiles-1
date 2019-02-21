@@ -9,6 +9,7 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(
 git
 dotenv
+docker
 )
 
 # load direnv

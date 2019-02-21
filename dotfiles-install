@@ -4,6 +4,17 @@ if [ $(uname) == "Linux" ]; then
   echo "Installing linux packages"
   if [ $(lsb_release -si) == "Debian" ]; then
     sudo apt-get -y update
+
+    # install docker
+    sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    sudo apt-get -y update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    IAM=$(whoami)
+    usermod -a -G docker $IAM
+
+    # install all other tools
     sudo apt-get -y install git git-crypt github-hub vim tig direnv tree
   fi
 fi
