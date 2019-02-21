@@ -20,7 +20,15 @@ if [[ $- =~ "i" ]]; then
 fi
 
 # load dir_colors
-eval `dircolors ~/.dir_colors`
+case $(uname) in
+  "Darwin")
+    eval `gdircolors ~/.dir_colors`
+    ;;
+  "Linux")
+    eval `dircolors ~/.dir_colors`
+    ;;
+  *)
+esac
 
 # Aliases
 alias dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
