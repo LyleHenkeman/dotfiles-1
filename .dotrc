@@ -4,6 +4,9 @@ cat ~/.banner; echo
 # check and set which shell we are running
 export DOTSHELL=$(echo $SHELL | awk -F "/" '{print $NF}')
 
+# empty DOTLIBS
+export DOTLIBS=""
+
 # Load stuff when we are interactive
 if [[ $- =~ "i" ]]; then
   # LOAD LIBRARIES
@@ -31,4 +34,12 @@ case $(uname) in
 esac
 
 # Aliases
-alias dotfiles="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+case $DOTSHELL in
+  "bash")
+    alias dotfiles="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+    ;;
+  "zsh")
+    alias dotfiles="$(which -p git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+    ;;
+  *)
+esac
