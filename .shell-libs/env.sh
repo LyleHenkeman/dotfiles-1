@@ -24,12 +24,6 @@ load_env() {
     echo "Could not find ENV: ${env}"
     return 1
   fi
-
-#  for var in "$@"; do
-#    if [[ -v ${var} ]]; then
-#      echo "Could not find required ENV variable: ${var}"
-#    fi
-#  done
 }
 
 get_env() {

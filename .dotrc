@@ -31,4 +31,4 @@ case $(uname) in
 esac
 
 # Aliases
-alias dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
