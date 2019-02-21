@@ -1,5 +1,5 @@
 # print the banner
-cat ~/banner; echo
+cat ~/.banner; echo
 
 # check if we want verbosity while loading libs and env stuff
 if [[ -a $HOME/.dotfilesverbose ]]; then
