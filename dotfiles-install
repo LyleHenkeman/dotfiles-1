@@ -1,14 +1,24 @@
+cat <<
+  _    _                ___              _      _ _    _
+ | |  (_)_ _ _  ___ __ / __|_ __  ___ __(_)__ _| (_)__| |_
+ | |__| | ' \ || \ \ / \__ \ '_ \/ -_) _| / _` | | (_-<  _|
+ |____|_|_||_\_,_/_\_\ |___/ .__/\___\__|_\__,_|_|_/__/\__|
+                           |_|
+                                        linux-specialist.nl
+
+EOF
+
 if [ $(uname) == "Linux" ]; then
   echo "Installing linux packages"
   if [ $(lsb_release -si) == "Debian" ]; then
-    sudo apt-get update
-    sudo apt-get install git git-crypt github-hub vim tig direnv
+    sudo apt-get -y update
+    sudo apt-get -y install git git-crypt github-hub vim tig direnv
   fi
 fi
 
 # If we run this on a Mac we want to setup homebrew and install everthing that is in the Brewfile
 if [ $(uname) == "Darwin" ]; then
-  echo "Installing darwin packages using Homebrew"
+  echo "Installing darwin packages"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew bundle
 fi
@@ -35,5 +45,7 @@ if [ ! -a $HOME/.vimplugindone ]; then
   vim +BundleInstall +qall
   touch $HOME/.vimplugindone
 fi
+
+echo "Installation Complete!"
 
 exit 0
