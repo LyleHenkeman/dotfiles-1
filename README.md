@@ -46,3 +46,33 @@ Checkout the actual dotfiles from remote git repository
 Do not show untracked files
 
 `dotfiles config --local status.showUntrackedFiles no`
+
+## dotenv (~/.env)
+
+This repository does not include a dotenv directory. because I'm not about to share my private credentials and environment settings.
+One could create a directory structure like this:
+
+```
+.env
+├── credentials
+│   └── <org>
+│       └── <project>.env
+├── global.env
+├── machines
+│   ├── <hostname>.env
+│   └── <othermachine>.env
+├── projects
+│   ├── <project1>.env
+│   ├── <project2>.env
+│   └── <project3>.env
+```
+
+* `global.env` is always loaded and contains generic environment variables (like LANG, EDITOR etc..)
+* `machines/hostname.env` is loaded depending on the local hostname (duh) for machine specific variables. 
+* `projects/projectname.env` could be loaded by direnv (.envrc) by adding `load_env project/project1`
+* `credentials/org/project.env` could also be loaded by direnv or by chaining it into a project.env file.
+
+### dotenv sharing
+
+The dotenv directory can be shared across your devices in many ways. I personally prefer pushing it into a private git repository and have the files encrypted with git-crypt.
+It basically doesn't matter how you share dotenv as long as its easily updated and (obviously) secured.

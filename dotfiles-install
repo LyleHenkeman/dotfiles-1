@@ -1,4 +1,4 @@
-cat <<
+echo <<
   _    _                ___              _      _ _    _
  | |  (_)_ _ _  ___ __ / __|_ __  ___ __(_)__ _| (_)__| |_
  | |__| | ' \ || \ \ / \__ \ '_ \/ -_) _| / _` | | (_-<  _|
@@ -12,7 +12,7 @@ if [ $(uname) == "Linux" ]; then
   echo "Installing linux packages"
   if [ $(lsb_release -si) == "Debian" ]; then
     sudo apt-get -y update
-    sudo apt-get -y install git git-crypt github-hub vim tig direnv
+    sudo apt-get -y install git git-crypt github-hub vim tig direnv tree
   fi
 fi
 
