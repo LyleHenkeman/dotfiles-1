@@ -112,6 +112,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# kubectl completion
+source <(kubectl completion bash)
+
 # load direnv
 eval "$(direnv hook bash)"
 export DIRENV_LOG_FORMAT=
