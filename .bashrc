@@ -121,3 +121,5 @@ source ~/.dotrc
 
 # kubectl completion
 source <(kubectl completion bash)
+
+true
