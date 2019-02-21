@@ -12,7 +12,9 @@ fi
 if [ $(uname) == "Darwin" ]; then
   echo "Installing darwin packages"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  curl -Lkso Brewfile https://raw.githubusercontent.com/dsteenstra/dotfiles/master/Brewfile
   brew bundle
+  rm -f Brewfile
 fi
 
 echo "Installing dotfiles"
