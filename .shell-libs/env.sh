@@ -7,9 +7,9 @@ load_env() {
   shift
 
   # Fuzzy filtering that removes the trailing .env if you do specify it
-  if [[ ${env} =~ .*.env$ ]]; then
-    local env="${env%'.env'}"
-  fi
+  #if [[ ${env} =~ .*.env$ ]]; then
+  #  local env="${env%'.env'}"
+  #fi
 
   if [ -r ${HOME}/.env/${env}.env ]; then
     if [ $(file -b --mime-type ${HOME}/.env/${env}.env) != "text/plain" ]; then
