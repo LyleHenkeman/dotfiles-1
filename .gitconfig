@@ -1,3 +1,7 @@
+[user]
+  name = Dennis Steenstra
+  email = dennis@linux-specialist.nl
+
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
