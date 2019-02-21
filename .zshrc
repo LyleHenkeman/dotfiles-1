@@ -69,6 +69,9 @@ dotenv
 
 source $ZSH/oh-my-zsh.sh
 
+# print the banner
+cat ~/banner; echo
+
 # check if we want verbosity while loading libs and env stuff
 if [[ -a $HOME/.dotfilesverbose ]]; then
   export DOTFILESVERBOSE='true'
@@ -77,12 +80,20 @@ fi
 # check and set which shell we are running
 export DOTSHELL=$(echo $SHELL | awk -F "/" '{print $NF}')
 
-# Source .shell-libs
-echo -n "Loading lib: "
-for lib in $(ls $HOME/.shell-libs); do
-  source $HOME/.shell-libs/$lib
-done
-echo
+# Load stuff when we are interactive
+if [[ $- =~ "i" ]]; then
+  # LOAD LIBRARIES
+  echo -n "Loading LIB: "
+  for lib in $(ls $HOME/.shell-libs); do
+    source $HOME/.shell-libs/$lib
+  done
+  echo
+
+   # LOAD ENVIRONMENTs
+  load_env global
+  load_env machines/$(hostname -s)
+fi
+
 
 # User configuration
 

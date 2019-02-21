@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $DOTFILESVERBOSE == "true" ]]; then
+      echo -n "env "
+fi
+
 load_env() {
   local env=${1:?no env set}
   shift
