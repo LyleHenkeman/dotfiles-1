@@ -1,0 +1,27 @@
+# print the banner
+cat ~/banner; echo
+
+# check if we want verbosity while loading libs and env stuff
+if [[ -a $HOME/.dotfilesverbose ]]; then
+  export DOTFILESVERBOSE='true'
+fi
+
+# check and set which shell we are running
+export DOTSHELL=$(echo $SHELL | awk -F "/" '{print $NF}')
+
+# Load stuff when we are interactive
+if [[ $- =~ "i" ]]; then
+  # LOAD LIBRARIES
+  echo -n "Loading LIB: "
+  for lib in $(ls $HOME/.shell-libs); do
+    source $HOME/.shell-libs/$lib
+  done
+  echo
+
+   # LOAD ENVIRONMENTS
+  load_env global
+  load_env machines/$(hostname -s)
+fi
+
+# Aliases
+alias dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
