@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $DOTFILESVERBOSE == "true" ]]; then
-      echo -n "env "
-fi
+export DOTLIBS="${DOTLIBS} env"
 
 load_env() {
   local env=${1:?no env set}

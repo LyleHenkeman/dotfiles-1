@@ -1,6 +1,4 @@
-if [[ $DOTFILESVERBOSE == "true" ]]; then
-    echo -n "ssh "
-fi
+export DOTLIBS="${DOTLIBS} ssh"
 
 link_ssh_agent() {
   if [[ $SSH_AUTH_SOCK =~ "/tmp/" ]]; then

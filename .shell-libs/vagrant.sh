@@ -1,6 +1,4 @@
-if [[ $DOTFILESVERBOSE == "true" ]]; then
-      echo -n "vagrant "
-fi
+export DOTLIBS="${DOTLIBS} vagrant"
 
 vgrebuild() {
   if [ $# -gt 0 ]; then

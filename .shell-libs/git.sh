@@ -1,6 +1,4 @@
-if [[ $DOTFILESVERBOSE == "true" ]]; then
-  echo -n "git "
-fi
+export DOTLIBS="${DOTLIBS} git"
 
 git_stats() {
   echo "Git stats for $(git me) for today:"

@@ -1,6 +1,4 @@
-if [[ $DOTFILESVERBOSE == "true" ]]; then
-    echo -n "docker "
-fi
+export DOTLIBS="${DOTLIBS} docker"
 
 if [[ $(uname) == "Darwin" ]]; then
     # docker-machine stuff
