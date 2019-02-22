@@ -1,0 +1,18 @@
+## general tweaks
+setenv SSH_AUTH_SOCK ${HOME}/.ssh/ssh-auth-sock
+vbell off
+autodetach on
+startup_message off
+defscrollback 1000
+attrcolor b ".I"
+shell -$SHELL
+#termcap xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#defbce "on"
+#term screen-256color
+
+## apps I want to auto-launch
+#screen -t irssi irssi
+#screen -t mutt mutt
+
+## statusline, customized. (should be one-line)
+hardstatus alwayslastline '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}[%{W}%n%f %t%?(%u)%?%{=b kR}]%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}][%{Y} %D %d-%m-%Y %0c %{g}]%{W}'

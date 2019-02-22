@@ -15,7 +15,7 @@ if [ $(uname) == "Linux" ]; then
     usermod -a -G docker $IAM
 
     # install all other tools
-    sudo apt-get -y install git git-crypt github-hub vim tig direnv tree
+    sudo apt-get -y install git git-crypt github-hub vim tig direnv tree tmux screen
   fi
 fi
 
