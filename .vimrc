@@ -17,7 +17,7 @@ Plugin 'ajh17/VimCompletesMe'
 " Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Yggdroot/indentLine'
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'ntpeters/vim-better-whitespace'
