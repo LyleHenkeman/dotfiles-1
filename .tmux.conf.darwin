@@ -1,3 +1,6 @@
+# set default-shell
+set-option -g default-shell /bin/zsh
+
 # remap prefix from 'C-b' to 'C-a'
 unbind C-b
 set-option -g prefix C-a
@@ -34,7 +37,7 @@ set -g mouse on
 set-option -g allow-rename off
 
 # Copy-paste integration
-set-option -g default-command "reattach-to-user-namespace -l bash"
+set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
